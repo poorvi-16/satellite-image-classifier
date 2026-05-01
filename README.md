@@ -42,4 +42,4 @@ jupyter notebook notebooks/01_data_exploration.ipynb
 Python · TensorFlow/Keras · EfficientNetB0 · OpenCV · scikit-learn · Matplotlib
 
 ## Author
-[Your Name] — BE CSE, [College], 6th Semester
+POORVIKA SRINIVAS — BE CSE, SJB Institute of Technology, 6th Semester
