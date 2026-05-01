@@ -29,7 +29,7 @@ critical for environmental monitoring, disaster response, and urban planning.
 satellite-image-classifier/
 │
 ├── data/
-│   └── (EuroSAT dataset goes here — Day 2)
+│   └── EuroSAT dataset
 │
 ├── notebooks/
 │   ├── 01_data_exploration.ipynb
@@ -42,7 +42,8 @@ satellite-image-classifier/
 │   └── utils.py
 │
 ├── results/
-│   └── (confusion matrix, sample predictions go here)
+│   └── confusion matrix
+    └── sample predictions
 │
 ├── requirements.txt
 ├── README.md
