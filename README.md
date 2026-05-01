@@ -26,17 +26,28 @@ critical for environmental monitoring, disaster response, and urban planning.
 | Model Size | ~20MB |
 
 ## Project Structure
-[paste the folder structure above]
+satellite-image-classifier/
+│
+├── data/
+│   └── (EuroSAT dataset goes here — Day 2)
+│
+├── notebooks/
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_model_training.ipynb
+│   └── 03_evaluation_visualization.ipynb
+│
+├── src/
+│   ├── dataset.py
+│   ├── model.py
+│   └── utils.py
+│
+├── results/
+│   └── (confusion matrix, sample predictions go here)
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
 
-## How to Run
-```bash
-git clone https://github.com/yourusername/satellite-image-classifier
-cd satellite-image-classifier
-pip install -r requirements.txt
-# Download EuroSAT dataset from: https://www.kaggle.com/datasets/apollo2506/eurosat-dataset
-# Place in data/ folder
-jupyter notebook notebooks/01_data_exploration.ipynb
-```
 
 ## Tech Stack
 Python · TensorFlow/Keras · EfficientNetB0 · OpenCV · scikit-learn · Matplotlib
