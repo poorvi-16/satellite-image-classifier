@@ -1,57 +1,80 @@
 # Satellite Image Classification using Deep Learning
 
-Classifying land use and land cover from satellite imagery using 
-transfer learning on the EuroSAT benchmark dataset.
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)
+![Dataset](https://img.shields.io/badge/Dataset-EuroSAT-green)
+![Accuracy](https://img.shields.io/badge/Accuracy-95%25+-brightgreen)
 
-## Motivation
-Earth Observation satellites like ISRO's EOS-08 generate massive volumes 
-of multispectral imagery. Automated classification of land cover is 
-critical for environmental monitoring, disaster response, and urban planning.
+## Overview
+Deep learning pipeline for satellite image classification using the EuroSAT dataset.
+Built as part of preparation for ISRO URSC internship application.
 
 ## Dataset
-- **EuroSAT** — 27,000 labeled Sentinel-2 satellite images
-- 10 classes: AnnualCrop, Forest, HerbaceousVegetation, Highway, 
-  Industrial, Pasture, PermanentCrop, Residential, River, SeaLake
-- Image size: 64×64 pixels, RGB
+- **Name:** EuroSAT (Sentinel-2 satellite imagery)
+- **Images:** 27,000 labeled images
+- **Classes:** 10 land cover types
+- **Image size:** 64×64 RGB (resized to 224×224 for model)
+- **Source:** [Kaggle — EuroSAT RGB Dataset](https://www.kaggle.com/datasets/apollo2506/eurosat-dataset)
 
-## Model Architecture
-- Base: EfficientNetB0 (pretrained on ImageNet)
-- Fine-tuned on EuroSAT
-- Additional: Grad-CAM visualizations for explainability
+## Model
+- **Architecture:** EfficientNetB0 pretrained on ImageNet
+- **Strategy:** Transfer learning with 2-phase fine-tuning
+- **Final Validation Accuracy:** 95%+
+- **Explainability:** Grad-CAM heatmaps for all 10 classes
 
 ## Results
-| Metric | Value |
-|--------|-------|
-| Test Accuracy | ~95% (updating after training) |
-| Model Size | ~20MB |
+
+### Training Curves
+![Training Curves](results/training_curves.png)
+
+### Confusion Matrix
+![Confusion Matrix](results/confusion_matrix.png)
+
+### Grad-CAM Visualizations
+![Grad-CAM](results/gradcam_visualizations.png)
+
+### Classification Report
+![Classification Report](results/classification_report.png)
 
 ## Project Structure
 satellite-image-classifier/
-│
-├── data/
-│   └── EuroSAT dataset
-│
+├── data/                          # Dataset directory (loaded from Kaggle)
 ├── notebooks/
-│   ├── 01_data_exploration.ipynb
-│   ├── 02_model_training.ipynb
-│   └── 03_evaluation_visualization.ipynb
-│
+│   ├── 01_data_exploration.ipynb  # EDA and dataset analysis
+│   ├── 02_model_training.ipynb    # EfficientNetB0 training pipeline
+│   └── 03_evaluation_visualization.ipynb  # Confusion matrix + Grad-CAM
 ├── src/
-│   ├── dataset.py
-│   ├── model.py
-│   └── utils.py
-│
-├── results/
-│   └── confusion matrix
-    └── sample predictions
-│
+│   ├── dataset.py                 # Data loading utilities
+│   ├── model.py                   # Model architecture
+│   └── utils.py                   # Helper functions
+├── results/                       # Saved plots and visualizations
 ├── requirements.txt
-├── README.md
-└── .gitignore
+└── README.md
 
+## Setup & Usage
+```bash
+# Clone the repo
+git clone https://github.com/poorvi-16/satellite-image-classifier.git
+cd satellite-image-classifier
 
-## Tech Stack
-Python · TensorFlow/Keras · EfficientNetB0 · OpenCV · scikit-learn · Matplotlib
+# Install dependencies
+pip install -r requirements.txt
+
+# Run notebooks in order
+# 1. 01_data_exploration.ipynb
+# 2. 02_model_training.ipynb
+# 3. 03_evaluation_visualization.ipynb
+```
+
+## Key Techniques
+- Transfer learning with EfficientNetB0 (ImageNet weights)
+- Two-phase training: frozen base → full fine-tuning
+- Data augmentation: rotation, flipping, zoom, shifts
+- Grad-CAM for visual explainability
+- EfficientNet-specific preprocessing (`preprocess_input`)
+
+## Dependencies
+See `requirements.txt` — key libraries: TensorFlow, OpenCV, scikit-learn, seaborn
 
 ## Author
-POORVIKA SRINIVAS — BE CSE, SJB Institute of Technology, 6th Semester
+CSE Student | ML & Deep Learning | Interested in Space Tech & AI Applications
